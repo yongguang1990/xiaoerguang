@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://xiaoerguang.top/"/>
-  <updated>2019-01-17T09:19:25.201Z</updated>
+  <updated>2019-01-17T16:45:43.560Z</updated>
   <id>http://xiaoerguang.top/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>给毛毛做的样例博客</title>
+    <link href="http://xiaoerguang.top/2019/01/18/%E7%BB%99%E6%AF%9B%E6%AF%9B%E5%81%9A%E7%9A%84%E5%8D%9A%E5%AE%A2%E6%A0%B7%E4%BE%8B/"/>
+    <id>http://xiaoerguang.top/2019/01/18/给毛毛做的博客样例/</id>
+    <published>2019-01-17T16:42:22.958Z</published>
+    <updated>2019-01-17T16:45:43.560Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="快速创建一个文章"><a href="#快速创建一个文章" class="headerlink" title="快速创建一个文章"></a>快速创建一个文章</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure><h3 id="编译一下"><a href="#编译一下" class="headerlink" title="编译一下"></a>编译一下</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo g</span><br></pre></td></tr></table></figure><h3 id="本地启动"><a href="#本地启动" class="headerlink" title="本地启动"></a>本地启动</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo s</span><br></pre></td></tr></table></figure><h3 id="部署到Github"><a href="#部署到Github" class="headerlink" title="部署到Github"></a>部署到Github</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo d</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;快速创建一个文章&quot;&gt;&lt;a href=&quot;#快速创建一个文章&quot; class=&quot;headerlink&quot; title=&quot;快速创建一个文章&quot;&gt;&lt;/a&gt;快速创建一个文章&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td cla
+      
+    
+    </summary>
+    
+    
+      <category term="JAVA" scheme="http://xiaoerguang.top/tags/JAVA/"/>
+    
+  </entry>
   
   <entry>
     <title></title>
@@ -316,7 +339,7 @@
     <link href="http://xiaoerguang.top/2019/01/15/hello-world/"/>
     <id>http://xiaoerguang.top/2019/01/15/hello-world/</id>
     <published>2019-01-15T07:09:14.977Z</published>
-    <updated>2019-01-17T15:39:08.569Z</updated>
+    <updated>2019-01-17T16:41:31.520Z</updated>
     
     <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>]]></content>
     
@@ -329,6 +352,8 @@
     
     </summary>
     
+    
+      <category term="JAVA" scheme="http://xiaoerguang.top/tags/JAVA/"/>
     
   </entry>
   
