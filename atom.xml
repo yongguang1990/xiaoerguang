@@ -339,7 +339,7 @@
     <link href="http://xiaoerguang.top/2019/01/15/hello-world/"/>
     <id>http://xiaoerguang.top/2019/01/15/hello-world/</id>
     <published>2019-01-15T07:09:14.977Z</published>
-    <updated>2019-01-17T16:41:31.520Z</updated>
+    <updated>2019-01-18T01:48:28.041Z</updated>
     
     <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>]]></content>
     
@@ -352,8 +352,48 @@
     
     </summary>
     
+      <category term="����" scheme="http://xiaoerguang.top/categories/%EF%BF%BD%EF%BF%BD%EF%BF%BD%EF%BF%BD/"/>
+    
     
       <category term="JAVA" scheme="http://xiaoerguang.top/tags/JAVA/"/>
+    
+      <category term="dubbo" scheme="http://xiaoerguang.top/tags/dubbo/"/>
+    
+      <category term="html" scheme="http://xiaoerguang.top/tags/html/"/>
+    
+      <category term="index.md" scheme="http://xiaoerguang.top/tags/index-md/"/>
+    
+      <category term="Java" scheme="http://xiaoerguang.top/tags/Java/"/>
+    
+      <category term="jmeter" scheme="http://xiaoerguang.top/tags/jmeter/"/>
+    
+      <category term="jqery" scheme="http://xiaoerguang.top/tags/jqery/"/>
+    
+      <category term="js" scheme="http://xiaoerguang.top/tags/js/"/>
+    
+      <category term="linux" scheme="http://xiaoerguang.top/tags/linux/"/>
+    
+      <category term="MongoDB" scheme="http://xiaoerguang.top/tags/MongoDB/"/>
+    
+      <category term="mysql" scheme="http://xiaoerguang.top/tags/mysql/"/>
+    
+      <category term="Oracle" scheme="http://xiaoerguang.top/tags/Oracle/"/>
+    
+      <category term="postman" scheme="http://xiaoerguang.top/tags/postman/"/>
+    
+      <category term="Python" scheme="http://xiaoerguang.top/tags/Python/"/>
+    
+      <category term="rabbitmq" scheme="http://xiaoerguang.top/tags/rabbitmq/"/>
+    
+      <category term="redis" scheme="http://xiaoerguang.top/tags/redis/"/>
+    
+      <category term="solr" scheme="http://xiaoerguang.top/tags/solr/"/>
+    
+      <category term="springboot" scheme="http://xiaoerguang.top/tags/springboot/"/>
+    
+      <category term="springcloud" scheme="http://xiaoerguang.top/tags/springcloud/"/>
+    
+      <category term="zookeeper" scheme="http://xiaoerguang.top/tags/zookeeper/"/>
     
   </entry>
   
