@@ -88,12 +88,12 @@
 <meta property="og:site_name" content="XiaoErGuang">
 <meta property="og:description" content="mybaties批量更新语句12345678910111213141516&amp;lt;update id=&quot;updateParam&quot; parameterType=&quot;java.util.List&quot;&amp;gt;            update searchsystemconfigproperties            &amp;lt;trim prefix=&quot;set&quot; suffixOverrides=&quot;,&quot;">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="d:/1st/壁纸2/DoskPicture/zhongguoguojiadili092.jpg">
+<meta property="og:image" content="http://xiaoerguang.top/2019/01/17/mybaties批量更新语句/1st/壁纸2/DoskPicture/zhongguoguojiadili092.jpg">
 <meta property="og:updated_time" content="2019-01-17T09:19:25.197Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="XiaoErGuang">
 <meta name="twitter:description" content="mybaties批量更新语句12345678910111213141516&amp;lt;update id=&quot;updateParam&quot; parameterType=&quot;java.util.List&quot;&amp;gt;            update searchsystemconfigproperties            &amp;lt;trim prefix=&quot;set&quot; suffixOverrides=&quot;,&quot;">
-<meta name="twitter:image" content="d:/1st/壁纸2/DoskPicture/zhongguoguojiadili092.jpg">
+<meta name="twitter:image" content="http://xiaoerguang.top/2019/01/17/mybaties批量更新语句/1st/壁纸2/DoskPicture/zhongguoguojiadili092.jpg">
 
 
 
@@ -332,7 +332,7 @@
       
 
       
-        <p><img src="D:\1st\壁纸2\DoskPicture\zhongguoguojiadili092.jpg" alt=""></p>
+        <p><img src="/2019/01/17/mybaties批量更新语句/1st\壁纸2\DoskPicture\zhongguoguojiadili092.jpg" alt=""></p>
 <h1 id="mybaties批量更新语句"><a href="#mybaties批量更新语句" class="headerlink" title="mybaties批量更新语句"></a>mybaties批量更新语句</h1><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;update id="updateParam" parameterType="java.util.List"&gt;</span><br><span class="line">            <span class="keyword">update</span> searchsystemconfigproperties</span><br><span class="line">            &lt;<span class="keyword">trim</span> prefix=<span class="string">"set"</span> suffixOverrides=<span class="string">","</span>&gt;</span><br><span class="line">	             &lt;<span class="keyword">trim</span> prefix=<span class="string">"keyValue = case"</span> suffix=<span class="string">"end,"</span>&gt;</span><br><span class="line">	                 &lt;foreach collection=<span class="string">"parameterList"</span> item=<span class="string">"i"</span> <span class="keyword">index</span>=<span class="string">"index"</span>&gt;</span><br><span class="line">	                         &lt;<span class="keyword">if</span> <span class="keyword">test</span>=<span class="string">"i.keyValue!=null and i.keyValue!= '' "</span>&gt;</span><br><span class="line">	                          <span class="keyword">when</span> keyName=<span class="comment">#&#123;i.keyName&#125; then #&#123;i.keyValue&#125;</span></span><br><span class="line">	                         &lt;/<span class="keyword">if</span>&gt;</span><br><span class="line">	                 &lt;/foreach&gt;</span><br><span class="line">	              &lt;/<span class="keyword">trim</span>&gt;</span><br><span class="line">             &lt;/<span class="keyword">trim</span>&gt;</span><br><span class="line">          	 	 <span class="keyword">where</span></span><br><span class="line">	        &lt;foreach collection=<span class="string">"parameterList"</span> separator=<span class="string">"or"</span> item=<span class="string">"i"</span> <span class="keyword">index</span>=<span class="string">"index"</span> &gt;</span><br><span class="line">	              keyName=<span class="comment">#&#123;i.keyName&#125;</span></span><br><span class="line">	         &lt;/foreach&gt;</span><br><span class="line">	&lt;/<span class="keyword">update</span>&gt;</span><br></pre></td></tr></table></figure>
       
     </div>
@@ -396,8 +396,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/01/17/我的第一篇博客 - 副本/" rel="prev" title="">
-                 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/01/18/给毛毛做的博客样例/" rel="prev" title="给毛毛做的样例博客">
+                给毛毛做的样例博客 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -477,7 +477,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -488,7 +488,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-count">2</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -625,6 +625,10 @@
     本站总访问量<span id="busuanzi_value_site_pv"></span>次
 </span>
 </div>
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共2.8k字</span>
+</div><br>
 
   <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
 
@@ -638,10 +642,7 @@
 
 
 
-<div class="theme-info">
-  <div class="powered-by"></div>
-  <span class="post-count">博客全站共13.2k字</span>
-</div>
+
         
 
 
