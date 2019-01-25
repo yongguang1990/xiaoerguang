@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next muse use-motion" lang="">
+<html class="theme-next gemini use-motion" lang="">
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -85,7 +85,7 @@
 <meta name="keywords" content="zh-Hans">
 <meta property="og:type" content="website">
 <meta property="og:title" content="XiaoErGuang">
-<meta property="og:url" content="http://xiaoerguang.top/tags/JAVA/index.html">
+<meta property="og:url" content="http://xiaoerguang.top/tags/Java/index.html">
 <meta property="og:site_name" content="XiaoErGuang">
 <meta property="og:description" content="小二光的博客">
 <meta property="og:locale" content="default">
@@ -99,7 +99,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Muse',
+    scheme: 'Gemini',
     version: '5.1.4',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
@@ -121,13 +121,13 @@
 
 
 
-  <link rel="canonical" href="http://xiaoerguang.top/tags/JAVA/">
+  <link rel="canonical" href="http://xiaoerguang.top/tags/Java/">
 
 
 
 
 
-  <title>Tag: JAVA | XiaoErGuang</title>
+  <title>Tag: Java | XiaoErGuang</title>
   
 
 
@@ -256,35 +256,9 @@
 
     <div id="posts" class="posts-collapse">
       <div class="collection-title">
-        <h1>JAVA<small>Tag</small>
+        <h1>Java<small>Tag</small>
         </h1>
       </div>
-
-      
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/01/18/给毛毛做的博客样例/" itemprop="url">
-              
-                <span itemprop="name">给毛毛做的样例博客</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-01-18T00:42:22+08:00" content="2019-01-18">
-          01-18
-        </time>
-      </div>
-
-    </header>
-  </article>
-
 
       
         
@@ -511,7 +485,7 @@
 
 
 
-  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
 
 
 
@@ -638,6 +612,13 @@
 
   
   
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
 
   
 
@@ -786,6 +767,32 @@
 
     $(function() {
       var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/miku.model.json"},"display":{"position":"right","width":100,"height":200},"mobile":{"show":true},"log":false});</script></body>
+</html>
+ Counter = AV.Object.extend("Counter");
       if ($('.leancloud_visitors').length == 1) {
         addCount(Counter);
       } else if ($('.post-title-link').length > 1) {
