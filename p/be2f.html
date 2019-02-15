@@ -1,0 +1,1674 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<meta name="baidu-site-verification" content="QHd039Sny2">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+  <script>
+  (function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/0f81ff2f.js","daovoice")
+  daovoice('init', {
+      app_id: "103791ff"
+    });
+  daovoice('update');
+  </script>
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="-svn,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="XiaoErGuang" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="Apache Subversion 通常被缩写成 SVN，是一个开放源代码的版本控制系统，Subversion 在 2000 年由 CollabNet Inc 开发，现在发展成为 Apache 软件基金会的一个项目，同样是一个丰富的开发者和用户社区的一部分。这个教程给你提供一个理解 SVN 系统，操作当前和历史版本的文件，比如代码、网页、文档。">
+<meta name="keywords" content="-svn">
+<meta property="og:type" content="article">
+<meta property="og:title" content="svn搭建教程">
+<meta property="og:url" content="http://xiaoerguang.top/p/be2f.html">
+<meta property="og:site_name" content="XiaoErGuang">
+<meta property="og:description" content="Apache Subversion 通常被缩写成 SVN，是一个开放源代码的版本控制系统，Subversion 在 2000 年由 CollabNet Inc 开发，现在发展成为 Apache 软件基金会的一个项目，同样是一个丰富的开发者和用户社区的一部分。这个教程给你提供一个理解 SVN 系统，操作当前和历史版本的文件，比如代码、网页、文档。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-02-15T03:15:00.127Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="svn搭建教程">
+<meta name="twitter:description" content="Apache Subversion 通常被缩写成 SVN，是一个开放源代码的版本控制系统，Subversion 在 2000 年由 CollabNet Inc 开发，现在发展成为 Apache 软件基金会的一个项目，同样是一个丰富的开发者和用户社区的一部分。这个教程给你提供一个理解 SVN 系统，操作当前和历史版本的文件，比如代码、网页、文档。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://xiaoerguang.top/p/be2f.html">
+
+
+
+
+
+  <title>svn搭建教程 | XiaoErGuang</title>
+  
+
+
+
+
+
+
+
+
+</head>
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+<a href="https://github.com/yongguang1990/"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_green_007200.png" alt="Fork me on GitHub"></a>
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">XiaoErGuang</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">技术成就梦想</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-首页">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-关于作者">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于作者
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-标签">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-分类">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-归档">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://xiaoerguang.top/p/be2f.html">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaoerguang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XiaoErGuang">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">svn搭建教程</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2013-02-15T11:08:44+08:00">
+                2013-02-15
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-02-15T11:15:00+08:00">
+                2019-02-15
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/svn/" itemprop="url" rel="index">
+                    <span itemprop="name">-svn</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/p/be2f.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/p/be2f.html" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/p/be2f.html" class="leancloud_visitors" data-flag-title="svn搭建教程">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  9.1k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  41
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="关于SVN"><a href="#关于SVN" class="headerlink" title="关于SVN"></a>关于SVN</h1><h2 id="SVN-教程"><a href="#SVN-教程" class="headerlink" title="SVN 教程"></a>SVN 教程</h2><p>Apache Subversion 通常被缩写成 SVN，是一个开放源代码的版本控制系统，Subversion 在 2000 年由 CollabNet Inc 开发，现在发展成为 Apache 软件基金会的一个项目，同样是一个丰富的开发者和用户社区的一部分。这个教程给你提供一个理解 SVN 系统，操作当前和历史版本的文件，比如代码、网页、文档。</p>
+<h2 id="适用人群"><a href="#适用人群" class="headerlink" title="适用人群"></a>适用人群</h2><p>这个教程设计为了让对 SVN 感兴趣的软件专业人士简单方便地开始。完成这个教程，你将充分了解 SVN 让自己获得更高的水平的专业知识。</p>
+<h2 id="学习前提"><a href="#学习前提" class="headerlink" title="学习前提"></a>学习前提</h2><p>在你继续本教程之前，你必须对简单的术语有一定的了解，比如源码，文档等等。因为在你的组织下处理各级软件项目，如果你有软件工作的知识在软件开发和软件测试流程那将是好的。</p>
+<h2 id="版本信息"><a href="#版本信息" class="headerlink" title="版本信息"></a>版本信息</h2><p>书中演示代码基于以下版本：</p>
+<table>
+<thead>
+<tr>
+<th>语言/框架</th>
+<th>版本信息</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SVN</td>
+</tr>
+</tbody>
+</table>
+<h1 id="SVN-基本概念"><a href="#SVN-基本概念" class="headerlink" title="SVN 基本概念"></a>SVN 基本概念</h1><h2 id="什么是版本控制系统-VCS"><a href="#什么是版本控制系统-VCS" class="headerlink" title="什么是版本控制系统(VCS)"></a>什么是版本控制系统(VCS)</h2><p><strong>版本控制系统 (VCS)</strong> 是一个软件，帮助软件开发人员团队工作并维持他们完整的工作历史。 <strong>下面是版本控制系统(VCS) 的目标</strong></p>
+<ul>
+<li>允许开发者们同时工作</li>
+<li>不会重写每个人的改变</li>
+<li>维持每个版本的全部的历史</li>
+</ul>
+<p><strong>VCS 被分成两种</strong></p>
+<ul>
+<li>集中版本控制系统 (CVCS) 和</li>
+<li>分散或不集中的版本控制系统 (DVCS)</li>
+</ul>
+<p>在这个教程里，我们只专注于集中的版本控制系统特别是 Subversion，Subversion 基于集中的版本控制系统，意味着使用统一的服务器让团队协作。</p>
+<p><strong>版本控制的术语</strong></p>
+<p>让我们先懂得一些在这个教程将用到的术语</p>
+<ul>
+<li>仓库: 仓库是任何一个版本系统的核心，它是开发者们保存工作的总部，仓库不止处理文件还有历史记录，它需要访问网络，扮演服务器的角色，版本控制工具扮演客户端的角色，客户端可以连接仓库，那么他们就可以从仓库中存储或者提取。通过保存这些更改，一个客户端的更改可以被其他人检索到，一个客户端可以让其他人的更改作为一个工作副本。</li>
+<li>主干：trunk 是主要开发所在的目录，经常被项目开发者们查看。</li>
+<li>标签：tags 目录用于储存项目中被命名的快照，标签操作允许给予对仓库中特定版本一个描述和一个难忘的名字。比如，LAST_STABLE_CODE_BEFORE_EMAIL_SUPPORT 比 Repository UUID: 7ceef8cb-3799-40dd-a067-c216ec2e5247 和Revision: 13 更令人难忘。</li>
+<li>分支：分支操作用于创建开发的另一条线，当你想把开发进程复制进两个不同的方向是很有用的。比如，当你发布 5.0 版本时，你可能想从 5.0 的 bug 修复中分离出来创建一个开发 6.0 功能的分支。</li>
+<li>工作副本：工作副本是仓库的一个快照。这个仓库被所有的成员共享，但人们不直接修改它，相反每个开发者检查这个工作副本，工作副本是一个私人的工作空间，这里开发者可以独立于其他成员做自己的工作。</li>
+<li>提交更改：提交是一个保存更改的过程，从私人工作空间到中央服务器。提交后，更改对全部成员可用，通过更新工作副本其他开发者提取这些更改。提交是一个原子操作，要么全部提交成功要么回滚，用户绝不会看到一半完成提交。</li>
+</ul>
+<h1 id="SVN-环境搭建"><a href="#SVN-环境搭建" class="headerlink" title="SVN 环境搭建"></a>SVN 环境搭建</h1><h2 id="SVN-环境搭建-1"><a href="#SVN-环境搭建-1" class="headerlink" title="SVN 环境搭建"></a>SVN 环境搭建</h2><p>Subversion 是一个受欢迎的开源的版本控制工具。他在互联网免费提供并且开源。大多数 GNU/Linux 发行版系统自带，所以它很有可能已经安装在你的系统上了。可以使用下面命令检查是否安装了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[jerry@CentOS ~]$ svn --version</span><br></pre></td></tr></table></figure>
+<p>如果 Subversion 客户端没有安装，命令将报告错误，否则它将出现安装的软件版本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[jerry@CentOS ~]$ svn --version  </span><br><span class="line">-bash: svn: command not found</span><br></pre></td></tr></table></figure>
+<p>如果你使用基于 RPM 的 GNU/Linux，可以使用 yum 命令进行安装，安装成功之后，执行 <code>svn --version</code> 命令。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[jerry@CentOS ~]$ su -</span><br><span class="line">Password: </span><br><span class="line">[root@CentOS ~]# yum install subversion</span><br><span class="line"></span><br><span class="line">[jerry@CentOS ~]$ svn --version</span><br><span class="line">svn, version 1.6.11 (r934486)</span><br><span class="line">compiled Jun 23 2012, 00:44:03</span><br></pre></td></tr></table></figure>
+<p>如果你使用基于 Debian 的 GNU/Linux，使用 apt 命令进行安装。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[jerry@Ubuntu]$ sudo apt-get update</span><br><span class="line">[sudo] password for jerry:</span><br><span class="line"></span><br><span class="line">[jerry@Ubuntu]$ sudo apt-get install subversion</span><br><span class="line"></span><br><span class="line">[jerry@Ubuntu]$ svn --version</span><br><span class="line">svn, version 1.7.5 (r1336830)</span><br><span class="line">compiled Jun 21 2013, 22:11:49</span><br></pre></td></tr></table></figure>
+<h2 id="Apache-安装"><a href="#Apache-安装" class="headerlink" title="Apache 安装"></a>Apache 安装</h2><p>我们已经看到如何将 SVN 客户端安装到 GNU/Linux 上，让我们看看如何创建一个新的版本库让使用者们访问。</p>
+<p>我们必须必须在服务器上安装 Apache httpd 模块和 svnadmin 工具。subversion 从 <code>/etc/httpd/conf.d/subversion.conf</code> 读取配置文件， subversion.conf 看起来像这个样子</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">LoadModule dav_svn_module     modules/mod_dav_svn.so</span><br><span class="line">LoadModule authz_svn_module   modules/mod_authz_svn.so</span><br><span class="line"></span><br><span class="line">&lt;Location /svn&gt;</span><br><span class="line">   DAV svn</span><br><span class="line">   SVNParentPath /var/www/svn</span><br><span class="line">   AuthType Basic</span><br><span class="line">   AuthName &quot;Authorization Realm&quot;</span><br><span class="line">   AuthUserFile /etc/svn-users</span><br><span class="line">   Require valid-user</span><br><span class="line">&lt;/Location&gt;</span><br></pre></td></tr></table></figure>
+<p>让我们创建 Subversion 用户，授权他们访问版本库，<code>htpasswd</code> 命令用于创建和更新用来保存用户名和密码的纯文本文件给 HTTP 用户提供基本身份认证。<code>-c</code> 选项创建一个密码文件，如果密码文件已经存在了，它将会被覆盖。这就是为什么 <code>-c</code> 只在第一次使用。<code>-m</code> 选项用于设置是否启用 MD5 加密密码。</p>
+<h2 id="用户安装"><a href="#用户安装" class="headerlink" title="用户安装"></a>用户安装</h2><p>让我们创建 tom</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@CentOS ~]# htpasswd -cm /etc/svn-users tom</span><br><span class="line">New password: </span><br><span class="line">Re-type new password: </span><br><span class="line">Adding password for user tom</span><br></pre></td></tr></table></figure>
+<p>让我们创建 jerry</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@CentOS ~]# htpasswd -m /etc/svn-users jerry</span><br><span class="line">New password: </span><br><span class="line">Re-type new password: </span><br><span class="line">Adding password for user jerry</span><br><span class="line">[root@CentOS ~]#</span><br></pre></td></tr></table></figure>
+<p>创建一个 Subversion 父目录保存所有的工作，(<code>/etc/httpd/conf.d/subversion.conf</code>)。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@CentOS ~]# mkdir /var/www/svn</span><br><span class="line">[root@CentOS ~]# cd /var/www/svn/</span><br></pre></td></tr></table></figure>
+<h2 id="版本库安装"><a href="#版本库安装" class="headerlink" title="版本库安装"></a>版本库安装</h2><p>创建一个名为 project_repo 的版本库。<code>svnadmin</code> 命令用于创建一个新的版本库和一些其他目录保存数据。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[root@CentOS svn]# svnadmin create project_repo</span><br><span class="line"></span><br><span class="line">[root@CentOS svn]# ls -l project_repo</span><br><span class="line">total 24</span><br><span class="line">drwxr-xr-x. 2 root root 4096 Aug  4 22:30 conf</span><br><span class="line">drwxr-sr-x. 6 root root 4096 Aug  4 22:30 db</span><br><span class="line">-r--r--r--. 1 root root    2 Aug  4 22:30 format</span><br><span class="line">drwxr-xr-x. 2 root root 4096 Aug  4 22:30 hooks</span><br><span class="line">drwxr-xr-x. 2 root root 4096 Aug  4 22:30 locks</span><br><span class="line">-rw-r--r--. 1 root root  229 Aug  4 22:30 README.txt</span><br></pre></td></tr></table></figure>
+<p>让我们更改版本库的用户和组所有权。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@CentOS svn]# chown -R apache.apache project_repo/</span><br></pre></td></tr></table></figure>
+<p>检查是否启用SELinux或没有使用SELinux状态工具</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[root@CentOS svn]# sestatus</span><br><span class="line">SELinux status:                 enabled</span><br><span class="line">SELinuxfs mount:                /selinux</span><br><span class="line">Current mode:                   enforcing</span><br><span class="line">Mode from config file:          enforcing</span><br><span class="line">Policy version:                 24</span><br><span class="line">Policy from config file:        targeted</span><br></pre></td></tr></table></figure>
+<p>如果SELinux启用了，我们必须更改安全的上下文。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@CentOS svn]# chcon -R -t httpd_sys_content_t /var/www/svn/project_repo/</span><br></pre></td></tr></table></figure>
+<p>如果允许通过 HTTP 进行提交，执行下面命令。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@CentOS svn]# chcon -R -t httpd_sys_rw_content_t /var/www/svn/project_repo/</span><br></pre></td></tr></table></figure>
+<p>更改这些配置后，我们重启 Apache 服务器。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[root@CentOS svn]# service httpd restart</span><br><span class="line">Stopping httpd:                                            [FAILED]</span><br><span class="line">Starting httpd: httpd: apr_sockaddr_info_get() failed for CentOS</span><br><span class="line">httpd: Could not reliably determine the server&apos;s fully qualified domain name, using 127.0.0.1 for ServerName</span><br><span class="line">                                                           [  OK  ]</span><br><span class="line">[root@CentOS svn]# service httpd status</span><br><span class="line">httpd (pid  1372) is running...</span><br><span class="line">[root@CentOS svn]#</span><br></pre></td></tr></table></figure>
+<p>我们已经成功配置好了 Apache 服务器，现在我们将配置版本库，使用默认的授权文件给可信的用户访问，添加下列几行到 <code>roject_repo/conf/svnserve.conf</code> 文件。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">anon-access = none</span><br><span class="line">authz-db = authz</span><br></pre></td></tr></table></figure>
+<p>照惯例，每个 SVN 项目都有主干，标签，分支在项目的 root 目录。</p>
+<p>主干是主要开发和经常被开发者们查看的目录。</p>
+<p>分支目录用于追求不同的开发方向。</p>
+<p>让我们在项目版本库底下创建主干，标签，分支结构。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@CentOS svn]# mkdir /tmp/svn-template</span><br><span class="line">[root@CentOS svn]# mkdir /tmp/svn-template/trunk</span><br><span class="line">[root@CentOS svn]# mkdir /tmp/svn-template/branches</span><br><span class="line">[root@CentOS svn]# mkdir /tmp/svn-template/tags</span><br></pre></td></tr></table></figure>
+<p>现在从 <code>/tmp/svn-template</code> 导入这些文件目录。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@CentOS svn]# svn import -m &apos;Create trunk, branches, tags directory structure&apos; /tmp/svn-template/ </span><br><span class="line">Adding         /tmp/svn-template/trunk</span><br><span class="line">Adding         /tmp/svn-template/branches</span><br><span class="line">Adding         /tmp/svn-template/tags</span><br><span class="line">Committed revision 1.</span><br><span class="line">[root@CentOS svn]#</span><br></pre></td></tr></table></figure>
+<p>完成了！我们已经成功创建版本库并允许 Tom 和 Jerry 访问，从现在开始他们可以所有版本库支持的操作了。</p>
+<h1 id="SVN-生命周期"><a href="#SVN-生命周期" class="headerlink" title="SVN 生命周期"></a>SVN 生命周期</h1><h2 id="SVN-生命周期-1"><a href="#SVN-生命周期-1" class="headerlink" title="SVN 生命周期"></a>SVN 生命周期</h2><p>本章讨论了版本控制系统的生命周期。在后面的章节中，我们将会介绍每个操作对应的 SVN 命令。</p>
+<h2 id="创建版本库"><a href="#创建版本库" class="headerlink" title="创建版本库"></a>创建版本库</h2><p>版本库相当于一个集中的空间，用于存放开发者所有的工作成果。版本库不仅能存放文件，还包括了每次修改的历史，即每个文件的变动历史。</p>
+<p><em>Create</em> 操作是用来创建一个新的版本库。大多数情况下这个操作只会执行一次。当你创建一个新的版本库的时候，你的版本控制系统会让你提供一些信息来标识版本库，例如创建的位置和版本库的名字。</p>
+<h2 id="检出"><a href="#检出" class="headerlink" title="检出"></a>检出</h2><p><em>Checkout</em> 操作是用来从版本库创建一个工作副本。工作副本是开发者私人的工作空间，可以进行内容的修改，然后提交到版本库中。</p>
+<h2 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h2><p>顾名思义，<em>update</em> 操作是用来更新版本库的。这个操作将工作副本与版本库进行同步。由于版本库是由整个团队共用的，当其他人提交了他们的改动之后，你的工作副本就会过期。</p>
+<p>让我们假设 <em>Tom</em> 和 <em>Jerry</em> 是一个项目的两个开发者。他们同时从版本库中检出了最新的版本并开始工作。此时，工作副本是与版本库完全同步的。然后，<em>Jerry</em>很高效的完成了他的工作并提交了更改到版本库中。</p>
+<p>此时 <em>Tom</em> 的工作副本就过期了。更新操作将会从版本库中拉取 <em>Jerry</em> 的最新改动并将 <em>Tom</em> 的工作副本进行更新。</p>
+<h2 id="执行变更"><a href="#执行变更" class="headerlink" title="执行变更"></a>执行变更</h2><p>当检出之后，你就可以做很多操作来执行变更。编辑是最常用的操作。你可以编辑已存在的文件来，例如进行文件的添加/删除操作。</p>
+<p>你可以添加文件/目录。但是这些添加的文件目录不会立刻成为版本库的一部分，而是被添加进待变更列表中，直到执行了 <em>commit</em> 操作后才会成为版本库的一部分。</p>
+<p>同样地你可以删除文件/目录。删除操作立刻将文件从工作副本中删除掉，但该文件的实际删除只是被添加到了待变更列表中，直到执行了 <em>commit</em> 操作后才会真正删除。</p>
+<p><em>Rename</em> 操作可以更改文件/目录的名字。“移动”操作用来将文件/目录从一处移动到版本库中的另一处。</p>
+<h2 id="复查变化"><a href="#复查变化" class="headerlink" title="复查变化"></a>复查变化</h2><p>当你检出工作副本或者更新工作副本后，你的工作副本就跟版本库完全同步了。但是当你对工作副本进行一些修改之后，你的工作副本会比版本库要新。在 <em>commit</em> 操作之前复查下你的修改是一个很好的习惯。</p>
+<p><em>Status</em> 操作列出了工作副本中所进行的变动。正如我们之前提到的，你对工作副本的任何改动都会成为待变更列表的一部分。<em>Status</em> 操作就是用来查看这个待变更列表。</p>
+<p><em>Status</em> 操作只是提供了一个变动列表，但并不提供变动的详细信息。你可以用 <em>diff</em> 操作来查看这些变动的详细信息。</p>
+<h2 id="修复错误"><a href="#修复错误" class="headerlink" title="修复错误"></a>修复错误</h2><p>我们来假设你对工作副本做了许多修改，但是现在你不想要这些修改了，这时候 <em>revert</em> 操作将会帮助你。</p>
+<p><em>Revert</em> 操作重置了对工作副本的修改。它可以重置一个或多个文件/目录。当然它也可以重置整个工作副本。在这种情况下，<em>revert</em> 操作将会销毁待变更列表并将工作副本恢复到原始状态。</p>
+<h2 id="解决冲突"><a href="#解决冲突" class="headerlink" title="解决冲突"></a>解决冲突</h2><p>合并的时候可能会发生冲突。<em>Merge</em> 操作会自动处理可以安全合并的东西。其它的会被当做冲突。例如，<em>“hello.c”</em> 文件在一个分支上被修改，在另一个分支上被删除了。这种情况就需要人为处理。<em>Resolve</em> 操作就是用来帮助用户找出冲突并告诉版本库如何处理这些冲突。</p>
+<h2 id="提交更改"><a href="#提交更改" class="headerlink" title="提交更改"></a>提交更改</h2><p><em>Commit</em> 操作是用来将更改从工作副本到版本库。这个操作会修改版本库的内容，其它开发者可以通过更新他们的工作副本来查看这些修改。</p>
+<p>在提交之前，你必须将文件/目录添加到待变更列表中。列表中记录了将会被提交的改动。当提交的时候，我们通常会提供一个注释来说明为什么会进行这些改动。这个注释也会成为版本库历史记录的一部分。<em>Commit</em> 是一个原子操作，也就是说要么完全提交成功，要么失败回滚。用户不会看到成功提交一半的情况。</p>
+<h1 id="SVN-检出过程"><a href="#SVN-检出过程" class="headerlink" title="SVN 检出过程"></a>SVN 检出过程</h1><h2 id="SVN-检出过程-1"><a href="#SVN-检出过程-1" class="headerlink" title="SVN 检出过程"></a>SVN 检出过程</h2><p>SVN提供了 <em>checkout</em> 命令来从版本库检出一个工作副本。下面的命令将会在当前工作副本中新建一个名为 <em>project_repo</em> 的文件夹。不用担心版本库的 URL 地址是什么，大部分时间里，SVN 管理员会提供给你地址和访问权限的。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[tom@CentOS ~]$ svn checkout http://svn.server.com/svn/project_repo --username=tom</span><br></pre></td></tr></table></figure>
+<p>以上命令将产生如下结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">A    project_repo/trunk</span><br><span class="line">A    project_repo/branches</span><br><span class="line">A    project_repo/tags</span><br><span class="line">Checked out revision 1.</span><br></pre></td></tr></table></figure>
+<p>每一次成功提交之后，修订版本号都会显示出来。如果你想查看更多关于版本库的信息，执行 <em>info</em> 命令。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[tom@CentOS trunk]$ pwd</span><br><span class="line">/home/tom/project_repo/trunk</span><br><span class="line"></span><br><span class="line">[tom@CentOS trunk]$ svn info</span><br></pre></td></tr></table></figure>
+<p>以上命令将产生如下结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Path: .</span><br><span class="line">URL: http://svn.server.com/svn/project_repo/trunk</span><br><span class="line">Repository Root: http://svn.server.com/svn/project_repo</span><br><span class="line">Repository UUID: 7ceef8cb-3799-40dd-a067-c216ec2e5247</span><br><span class="line">Revision: 1</span><br><span class="line">Node Kind: directory</span><br><span class="line">Schedule: normal</span><br><span class="line">Last Changed Author: jerry</span><br><span class="line">Last Changed Rev: 0</span><br><span class="line">Last Changed Date: 2013-08-24 18:15:52 +0530 (Sat, 24 Aug 2013)</span><br><span class="line"></span><br><span class="line">[tom@CentOS trunk]$</span><br></pre></td></tr></table></figure>
+<h1 id="SVN-执行修改"><a href="#SVN-执行修改" class="headerlink" title="SVN 执行修改"></a>SVN 执行修改</h1><h2 id="SVN-执行修改-1"><a href="#SVN-执行修改-1" class="headerlink" title="SVN 执行修改"></a>SVN 执行修改</h2><p><em>Jerry</em> 从版本库检出了最新的版本并开始在项目上工作。他在 <em>trunk</em> 目录下创建了一个 <em>array.c</em> 文件。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[jerry@CentOS ~]$ cd project_repo/trunk/</span><br><span class="line"></span><br><span class="line">[jerry@CentOS trunk]$ cat array.c</span><br></pre></td></tr></table></figure>
+<p>以上命令将产生如下结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#define MAX 16</span><br><span class="line"></span><br><span class="line">int main(void) &#123;</span><br><span class="line">   int i, n, arr[MAX];</span><br><span class="line">   printf(&quot;Enter the total number of elements: &quot;);</span><br><span class="line">   scanf(&quot;%d&quot;, &amp;n);</span><br><span class="line"></span><br><span class="line">   printf(&quot;Enter the elements\n&quot;);</span><br><span class="line"></span><br><span class="line">   for (i = 0; i &lt; n; ++i) scanf(&quot;%d&quot;, &amp;arr[i]);</span><br><span class="line">   printf(&quot;Array has following elements\n&quot;);</span><br><span class="line">   for (i = 0; i &lt; n; ++i) printf(&quot;|%d| &quot;, arr[i]);</span><br><span class="line"></span><br><span class="line">   printf(&quot;\n&quot;);</span><br><span class="line">   return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>他想在提交之前测试他的代码。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">[jerry@CentOS trunk]$ make array</span><br><span class="line">cc     array.c   -o array</span><br><span class="line"></span><br><span class="line">[jerry@CentOS trunk]$ ./array </span><br><span class="line">Enter the total number of elements: 5</span><br><span class="line">Enter the elements</span><br><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">Array has following elements</span><br><span class="line">|1| |2| |3| |4| |5|</span><br></pre></td></tr></table></figure>
+<p>他编译并测试了代码，一切正常，现在是时候提交更改了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[jerry@CentOS trunk]$ svn status</span><br><span class="line">?       array.c</span><br><span class="line">?       array</span><br></pre></td></tr></table></figure>
+<p>SVN显示在文件名前显示“?”，因为它不知道如何处理这些文件。</p>
+<p>在提交之前，<em>Jerry</em> 需要将文件添加到待变更列表中。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[jerry@CentOS trunk]$ svn add array.c </span><br><span class="line">A         array.c</span><br></pre></td></tr></table></figure>
+<p>现在让我们来用 <em>status</em> 命令来检查它。SVN在 <em>array.c</em> 文件前面显示了一个 <strong>A</strong>，它意味着这个文件已经被成功地添加到了待变更列表中。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[jerry@CentOS trunk]$ svn status</span><br><span class="line">?       array</span><br><span class="line">A       array.c</span><br></pre></td></tr></table></figure>
+<p>为了把 <em>array.c</em> 存储到版本库中，使用 <em>commit -m</em> 加上注释信息来提交。如果你忽略了 <em>-m</em> 选项， SVN会打开一个可以输入多行的文本编辑器来让你输入提交信息。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[jerry@CentOS trunk]$ svn commit -m &quot;Initial commit&quot;</span><br><span class="line">Adding         trunk/array.c</span><br><span class="line">Transmitting file data .</span><br><span class="line">Committed revision 2.</span><br></pre></td></tr></table></figure>
+<p>现在 <em>array.c</em> 被成功地添加到了版本库中，并且修订版本号增加了1。</p>
+<h1 id="SVN-检查更改"><a href="#SVN-检查更改" class="headerlink" title="SVN 检查更改"></a>SVN 检查更改</h1><h2 id="SVN-检查更改-1"><a href="#SVN-检查更改-1" class="headerlink" title="SVN 检查更改"></a>SVN 检查更改</h2><p>Jerry 往仓库里添加了一个叫做 array.c 的文件。 Tom 签出最后一个版本后开始工作。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[tom@CentOS ~]$ svn co http://svn.server.com/svn/project_repo --username=tom</span><br></pre></td></tr></table></figure>
+<p>上面的命令将会产生下面的效果</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">A    project_repo/trunk</span><br><span class="line">A    project_repo/trunk/array.c</span><br><span class="line">A    project_repo/branches</span><br><span class="line">A    project_repo/tags</span><br><span class="line">Checked out revision 2.</span><br></pre></td></tr></table></figure>
+<p>但是，他发现有人已经添加了代码，他很好奇是谁添加的，于是他用下面的命令检查 log 信息：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[tom@CentOS trunk]$ svn log</span><br></pre></td></tr></table></figure>
+<p>上面的命令将会产生下面的效果</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">------------------------------------------------------------------------</span><br><span class="line">r2 | jerry | 2013-08-17 20:40:43 +0530 (Sat, 17 Aug 2013) | 1 line</span><br><span class="line"></span><br><span class="line">Initial commit</span><br><span class="line">------------------------------------------------------------------------</span><br><span class="line">r1 | jerry | 2013-08-04 23:43:08 +0530 (Sun, 04 Aug 2013) | 1 line</span><br><span class="line"></span><br><span class="line">Create trunk, branches, tags directory structure</span><br><span class="line">------------------------------------------------------------------------</span><br></pre></td></tr></table></figure>
+<p>当 Tom 查看 Jerry 的代码时，他注意到了里面的一个 bug 。 Jerry 没有检查数组溢出，这会导致很严重的问题。所以 Tom 决定修复这个问题。在修改之后， array.c 将会是这个样子。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line"></span><br><span class="line">#define MAX 16</span><br><span class="line"></span><br><span class="line">int main(void)</span><br><span class="line">&#123;</span><br><span class="line">   int i, n, arr[MAX];</span><br><span class="line"></span><br><span class="line">   printf(&quot;Enter the total number of elements: &quot;);</span><br><span class="line">   scanf(&quot;%d&quot;, &amp;n);</span><br><span class="line"></span><br><span class="line">   /* handle array overflow condition */</span><br><span class="line">   if (n &gt; MAX) &#123;</span><br><span class="line">      fprintf(stderr, &quot;Number of elements must be less than %d\n&quot;, MAX);</span><br><span class="line">      return 1;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   printf(&quot;Enter the elements\n&quot;);</span><br><span class="line"></span><br><span class="line">   for (i = 0; i &lt; n; ++i)</span><br><span class="line">      scanf(&quot;%d&quot;, &amp;arr[i]);</span><br><span class="line"></span><br><span class="line">   printf(&quot;Array has following elements\n&quot;);</span><br><span class="line">   for (i = 0; i &lt; n; ++i)</span><br><span class="line">      printf(&quot;|%d| &quot;, arr[i]);</span><br><span class="line">      printf(&quot;\n&quot;);</span><br><span class="line"></span><br><span class="line">   return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Tom 想使用 status 操作来看看将要生效的更改列表</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[tom@CentOS trunk]$ svn status</span><br><span class="line">M       array.c</span><br></pre></td></tr></table></figure>
+<p>array.c 文件已经被修改，Subversion 会在修改过的文件前面加一个字母 M 。接下来 Tom 编译测试了他的代码，并且工作良好。在提交更改前，他想要再次检查他的更改。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">[tom@CentOS trunk]$ svn diff</span><br><span class="line">Index: array.c</span><br><span class="line">===================================================================</span><br><span class="line">--- array.c   (revision 2)</span><br><span class="line">+++ array.c   (working copy)</span><br><span class="line">@@ -9,6 +9,11 @@</span><br><span class="line">    printf(&quot;Enter the total number of elements: &quot;);</span><br><span class="line">    scanf(&quot;%d&quot;, &amp;n);</span><br><span class="line"></span><br><span class="line">+   if (n &gt; MAX) &#123;</span><br><span class="line">+      fprintf(stderr, &quot;Number of elements must be less than %d\n&quot;, MAX);</span><br><span class="line">+      return 1;</span><br><span class="line">+   &#125;</span><br><span class="line">+</span><br><span class="line">    printf(&quot;Enter the elements\n&quot;);</span><br><span class="line"></span><br><span class="line">    for (i = 0; i &lt; n; ++i)</span><br></pre></td></tr></table></figure>
+<p>Tom 在 array.c 文件中添加了几行代码,Subversion 会在新添加的这几行代码前面添加 ＋ 号标记，现在，他已经准备好提交他的代码。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[tom@CentOS trunk]$ svn commit -m &quot;Fix array overflow problem&quot;</span><br></pre></td></tr></table></figure>
+<p>上面的命令将会产生下面的效果</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Sending        trunk/array.c</span><br><span class="line">Transmitting file data .</span><br><span class="line">Committed revision 3.</span><br></pre></td></tr></table></figure>
+<p>Tom 的更改被成功得提交到了仓库中。</p>
+<h1 id="SVN-更新过程"><a href="#SVN-更新过程" class="headerlink" title="SVN 更新过程"></a>SVN 更新过程</h1><h2 id="SVN-更新过程-1"><a href="#SVN-更新过程-1" class="headerlink" title="SVN 更新过程"></a>SVN 更新过程</h2><p>Jerry 提交了他第一个版本的代码. 但是他想他应该写两个函数用来接收输入和显示数组，在修改之后， array.c 看起来像是下面这样。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#define MAX 16</span><br><span class="line"></span><br><span class="line">void accept_input(int *arr, int n) &#123;</span><br><span class="line">   int i;</span><br><span class="line">   for (i = 0; i &lt; n; ++i) </span><br><span class="line">   scanf(&quot;%d&quot;, &amp;arr[i]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void display(int *arr, int n) &#123;</span><br><span class="line">   int i;</span><br><span class="line">   for (i = 0; i &lt; n; ++i) </span><br><span class="line">   printf(&quot;|%d| &quot;, arr[i]);</span><br><span class="line"></span><br><span class="line">   printf(&quot;\n&quot;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main(void) &#123;</span><br><span class="line">   int i, n, arr[MAX];</span><br><span class="line"></span><br><span class="line">   printf(&quot;Enter the total number of elements: &quot;);</span><br><span class="line">   scanf(&quot;%d&quot;, &amp;n);</span><br><span class="line"></span><br><span class="line">   printf(&quot;Enter the elements\n&quot;);</span><br><span class="line">   accept_input(arr, n);</span><br><span class="line"></span><br><span class="line">   printf(&quot;Array has following elements\n&quot;);</span><br><span class="line">   display(arr, n);</span><br><span class="line"></span><br><span class="line">   return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Jerry 编译和测试了他的代码，现在他准备提交他的更改。在此之前，他想要用下面的命令查看更改。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[jerry@CentOS trunk]$ svn diff</span><br></pre></td></tr></table></figure>
+<p>上面的命令将会产生下面的效果</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">Index: array.c</span><br><span class="line">===================================================================</span><br><span class="line">--- array.c   (revision 2)</span><br><span class="line">+++ array.c   (working copy)</span><br><span class="line">@@ -2,6 +2,24 @@</span><br><span class="line"></span><br><span class="line"> #define MAX 16</span><br><span class="line"></span><br><span class="line">+void accept_input(int *arr, int n)</span><br><span class="line">+&#123;</span><br><span class="line">+   int i;</span><br><span class="line">+</span><br><span class="line">+   for (i = 0; i &amp; n; ++i)</span><br><span class="line">+      scanf(&quot;%d&quot;, &amp;arr[i]);</span><br><span class="line">+&#125;</span><br><span class="line">+</span><br><span class="line">+void display(int *arr, int n)</span><br><span class="line">+&#123;</span><br><span class="line">+   int i;</span><br><span class="line">+</span><br><span class="line">+   for (i = 0; i &lt; n; ++i)</span><br><span class="line">+      printf(&quot;|%d| &quot;, arr[i]);</span><br><span class="line">+   </span><br><span class="line">+   printf(&quot;\n&quot;);</span><br><span class="line">+&#125;</span><br><span class="line">+</span><br><span class="line"> int main(void)</span><br><span class="line"> &#123;</span><br><span class="line">    int i, n, arr[MAX];</span><br><span class="line">@@ -10,15 +28,10 @@</span><br><span class="line">    scanf(&quot;%d&quot;, &amp;n);</span><br><span class="line"></span><br><span class="line">    printf(&quot;Enter the elements\n&quot;);</span><br><span class="line">+   accept_input(arr, n);</span><br><span class="line"></span><br><span class="line">-   for (i = 0; i &lt; n; ++i)</span><br><span class="line">-      scanf(&quot;%d&quot;, &amp;arr[i]);</span><br><span class="line">-</span><br><span class="line">    printf(&quot;Array has following elements\n&quot;);</span><br><span class="line">-   for (i = 0; i &lt; n; ++i)</span><br><span class="line">-      printf(&quot;|%d| &quot;, arr[i]);</span><br><span class="line">-   </span><br><span class="line">-   printf(&quot;\n&quot;);</span><br><span class="line">+   display(arr, n);</span><br><span class="line"></span><br><span class="line">    return 0;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<p>对于新增加的行， Subversion 在前面加上了 ＋ 号，并且用 - 号标记了删除掉的行。现在， Jerry 尝试使用下面的命令来提交他的更改：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[jerry@CentOS trunk]$ svn commit -m &quot;Add function to accept input and to display array contents&quot;</span><br></pre></td></tr></table></figure>
+<p>上面的命令将会产生下面的效果</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Sending        trunk/array.c</span><br><span class="line">svn: Commit failed (details follow):</span><br><span class="line">svn: File or directory &apos;array.c&apos; is out of date; try updating</span><br><span class="line">svn: resource out of date; try updating</span><br></pre></td></tr></table></figure>
+<p>Subversion 不会允许 Jerry 提交他的更改，因为 Tom 已经修改了仓库，所以 Jerry 的工作副本已经失效。为了避免两人的代码被互相覆盖，Subversion 不允许他进行这样的操作。Jerry 在提交他的更改之前必须先更新工作副本。所以他使用了 update 命令，如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[jerry@CentOS trunk]$ svn update</span><br><span class="line">G    array.c</span><br><span class="line">Updated to revision 3.</span><br></pre></td></tr></table></figure>
+<p>Subversion 在这个文件前面加上了字母 G 标记, 这意味着这个文件是被合并过的。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[jerry@CentOS trunk]$ svn diff</span><br></pre></td></tr></table></figure>
+<p>上面的命令将会产生下面的效果</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">Index: array.c</span><br><span class="line">===================================================================</span><br><span class="line">--- array.c   (revision 3)</span><br><span class="line">+++ array.c   (working copy)</span><br><span class="line">@@ -2,6 +2,24 @@</span><br><span class="line"></span><br><span class="line"> #define MAX 16</span><br><span class="line"></span><br><span class="line">+void accept_input(int *arr, int n)</span><br><span class="line">+&#123;</span><br><span class="line">+   int i;</span><br><span class="line">+</span><br><span class="line">+   for (i = 0; i &lt; n; ++i)</span><br><span class="line">+      scanf(&quot;%d&quot;, &amp;arr[i]);</span><br><span class="line">+&#125;</span><br><span class="line">+</span><br><span class="line">+void display(int *arr, int n)</span><br><span class="line">+&#123;</span><br><span class="line">+   int i;</span><br><span class="line">+</span><br><span class="line">+   for (i = 0; i &lt; n; ++i)</span><br><span class="line">+      printf(&quot;|%d| &quot;, arr[i]);</span><br><span class="line">+   </span><br><span class="line">+   printf(&quot;\n&quot;);</span><br><span class="line">+&#125;</span><br><span class="line"></span><br><span class="line">+</span><br><span class="line"> int main(void)</span><br><span class="line"> &#123;</span><br><span class="line">    int i, n, arr[MAX];</span><br><span class="line">@@ -15,15 +33,10 @@</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    printf(&quot;Enter the elements\n&quot;);</span><br><span class="line">+   accept_input(arr, n);</span><br><span class="line"></span><br><span class="line">-   for (i = 0; i &lt; n; ++i)</span><br><span class="line">-      scanf(&quot;%d&quot;, &amp;arr[i]);</span><br><span class="line">-</span><br><span class="line">    printf(&quot;Array has following elements\n&quot;);</span><br><span class="line">-   for (i = 0; i &lt; n; ++i)</span><br><span class="line">-      printf(&quot;|%d| &quot;, arr[i]);</span><br><span class="line">-   </span><br><span class="line">-   printf(&quot;\n&quot;);</span><br><span class="line">+   display(arr, n);</span><br><span class="line"></span><br><span class="line">    return 0;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<p>Subversion 只展示出了 Jerry 的更改，但是 array.c 文件被合并了。如果你仔细观察，Subversion 现在展示的版本号是3。在之前的输出中，它展示的版本号是2。只是展示出了谁对其进行了更改和更改的目的。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">jerry@CentOS trunk]$ svn log</span><br><span class="line">------------------------------------------------------------------------</span><br><span class="line">r3 | tom   | 2013-08-18 20:21:50 +0530 (Sun, 18 Aug 2013)   | 1 line</span><br><span class="line"></span><br><span class="line">Fix array overflow problem</span><br><span class="line">------------------------------------------------------------------------</span><br><span class="line">r2 | jerry | 2013-08-17 20:40:43 +0530 (Sat, 17 Aug 2013) | 1 line</span><br><span class="line"></span><br><span class="line">Initial commit</span><br><span class="line">------------------------------------------------------------------------</span><br><span class="line">r1 | jerry | 2013-08-04 23:43:08 +0530 (Sun, 04 Aug 2013) | 1 line</span><br><span class="line"></span><br><span class="line">Create trunk, branches, tags directory structure</span><br><span class="line">------------------------------------------------------------------------</span><br></pre></td></tr></table></figure>
+<p>现在 Jerry 的工作目录是和仓库同步的，他现在可以安全地提交更改了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[jerry@CentOS trunk]$ svn commit -m &quot;Add function to accept input and to display array contents&quot;</span><br><span class="line">Sending        trunk/array.c</span><br><span class="line">Transmitting file data .</span><br><span class="line">Committed revision 4.</span><br></pre></td></tr></table></figure>
+<h1 id="SVN-修复错误"><a href="#SVN-修复错误" class="headerlink" title="SVN 修复错误"></a>SVN 修复错误</h1><h2 id="SVN-修复错误-1"><a href="#SVN-修复错误-1" class="headerlink" title="SVN 修复错误"></a>SVN 修复错误</h2><p>假设 Jerry 意外地更改了 array.c 文件而导致编译错误，他想放弃修改。在这种状况下，‘revert’ 操作将派上用场。revert 操作将撤销任何文件或目录里的局部更改。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[jerry@CentOS trunk]$ svn status</span><br></pre></td></tr></table></figure>
+<p>上面的命令将会产生下面的效果</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">M       array.c</span><br></pre></td></tr></table></figure>
+<p>让我们尝试创建一个数组，如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[jerry@CentOS trunk]$ make array</span><br></pre></td></tr></table></figure>
+<p>上面的命令将会产生下面的效果</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">cc     array.c   -o array</span><br><span class="line">array.c: In function ‘main’:</span><br><span class="line">array.c:26: error: ‘n’ undeclared (first use in this function)</span><br><span class="line">array.c:26: error: (Each undeclared identifier is reported only once</span><br><span class="line">array.c:26: error: for each function it appears in.)</span><br><span class="line">array.c:34: error: ‘arr’ undeclared (first use in this function)</span><br><span class="line">make: *** [array] Error 1</span><br></pre></td></tr></table></figure>
+<p>Jerry 在 array.c 文件里执行了‘revert’操作。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[jerry@CentOS trunk]$ svn revert array.c </span><br><span class="line">Reverted &apos;array.c&apos;</span><br><span class="line"></span><br><span class="line">[jerry@CentOS trunk]$ svn status</span><br><span class="line">[jerry@CentOS trunk]$</span><br></pre></td></tr></table></figure>
+<p>现在开始编译代码。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[jerry@CentOS trunk]$ make array</span><br><span class="line">cc     array.c   -o array</span><br></pre></td></tr></table></figure>
+<p>进行 revert 操作之后，他的文件恢复了原始的状态。 revert 操作不单单可以使单个文件恢复原状，而且可以使整个目录恢复原状。恢复目录用 －R 命令，如下。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[jerry@CentOS project_repo]$ pwd</span><br><span class="line">/home/jerry/project_repo</span><br><span class="line"></span><br><span class="line">[jerry@CentOS project_repo]$ svn revert -R trunk</span><br></pre></td></tr></table></figure>
+<p>现在，我们已经知道如何撤销更改。但是，假使你想恢复一个已经提交的版本怎么办！Version Control System 工具不允许删除仓库的历史纪录。为了消除一个旧版本，我们必须撤销旧版本里的所有更改然后提交一个新版本。这种操作叫做 reverse merge。</p>
+<p>假设 Jerry 添加了一段线性搜索操作的代码，核查之后，他提交了更改。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">[jerry@CentOS trunk]$ svn diff</span><br><span class="line">Index: array.c</span><br><span class="line">===================================================================</span><br><span class="line">--- array.c   (revision 21)</span><br><span class="line">+++ array.c   (working copy)</span><br><span class="line">@@ -2,6 +2,16 @@</span><br><span class="line"></span><br><span class="line"> #define MAX 16</span><br><span class="line"></span><br><span class="line">+int linear_search(int *arr, int n, int key)</span><br><span class="line">+&#123;</span><br><span class="line">+   int i;</span><br><span class="line">+</span><br><span class="line">+   for (i = 0; i &lt; n; ++i)</span><br><span class="line">+      if (arr[i] == key)</span><br><span class="line">+         return i;</span><br><span class="line">+   return -1;</span><br><span class="line">+&#125;</span><br><span class="line">+</span><br><span class="line"> void bubble_sort(int *arr, int n)</span><br><span class="line"> &#123;</span><br><span class="line">    int i, j, temp, flag = 1;</span><br><span class="line"></span><br><span class="line">[jerry@CentOS trunk]$ svn status</span><br><span class="line">?       array</span><br><span class="line">M       array.c</span><br><span class="line"></span><br><span class="line">[jerry@CentOS trunk]$ svn commit -m &quot;Added code for linear search&quot;</span><br><span class="line">Sending        trunk/array.c</span><br><span class="line">Transmitting file data .</span><br><span class="line">Committed revision 22.</span><br></pre></td></tr></table></figure>
+<p>Jerry 很好奇 Tom 以前写的代码。所以他检查了 Subversion 的 log 信息。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[jerry@CentOS trunk]$ svn log</span><br></pre></td></tr></table></figure>
+<p>上面的命令将会产生下面的效果</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">------------------------------------------------------------------------</span><br><span class="line">r5 | tom   | 2013-08-24 17:15:28 +0530 (Sat, 24 Aug 2013) | 1 line</span><br><span class="line"></span><br><span class="line">Add binary search operation</span><br><span class="line">------------------------------------------------------------------------</span><br><span class="line">r4 | jerry | 2013-08-18 20:43:25 +0530 (Sun, 18 Aug 2013) | 1 line</span><br><span class="line"></span><br><span class="line">Add function to accept input and to display array contents</span><br></pre></td></tr></table></figure>
+<p>查看 log 信息之后，Jerry 意识到他犯了个严重的错误。因为 Tom 已经写了比线性搜索更好的二分法搜索，Jerry 发现自己的代码很冗余，他决定撤销之前对版本的修改。首先，找到仓库的当前版本，现在是版本 22，我们要撤销回之前的版本，比如版本 21。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[jerry@CentOS trunk]$ svn up </span><br><span class="line">At revision 22.</span><br><span class="line"></span><br><span class="line">[jerry@CentOS trunk]$ svn merge -r 22:21 array.c </span><br><span class="line">--- Reverse-merging r22 into &apos;array.c&apos;:</span><br><span class="line">U    array.c</span><br><span class="line"></span><br><span class="line">[jerry@CentOS trunk]$ svn commit -m &quot;Reverted to revision 21&quot;</span><br><span class="line">Sending        trunk/array.c</span><br><span class="line">Transmitting file data .</span><br><span class="line">Committed revision 23.</span><br></pre></td></tr></table></figure>
+<h1 id="SVN-解决冲突"><a href="#SVN-解决冲突" class="headerlink" title="SVN 解决冲突"></a>SVN 解决冲突</h1><h2 id="SVN-解决冲突-1"><a href="#SVN-解决冲突-1" class="headerlink" title="SVN 解决冲突"></a>SVN 解决冲突</h2><p><em>Tom</em>决定给他的工程添加一个 README 文件，于是他创建了这个文件并在其中添加了 TODO 列表。添加完成之后，该文件的存放处位于 revision 6.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">[tom@CentOS trunk]$ cat README </span><br><span class="line">/* TODO: Add contents in README file */</span><br><span class="line"></span><br><span class="line">[tom@CentOS trunk]$ svn status</span><br><span class="line">?       README</span><br><span class="line"></span><br><span class="line">[tom@CentOS trunk]$ svn add README </span><br><span class="line">A         README</span><br><span class="line"></span><br><span class="line">[tom@CentOS trunk]$ svn commit -m &quot;Added README file. Will update it&apos;s content in future.&quot;</span><br><span class="line">Adding         trunk/README</span><br><span class="line">Transmitting file data .</span><br><span class="line">Committed revision 6.</span><br></pre></td></tr></table></figure>
+<p><em>Jerry</em> 检出了位于 revision 6 最后的代码，并且他直接立刻开始了工作。几个小时以后，<em>Tom</em> 更新了 README 文件并且提交了他所修改的地方。修改的 README 将会看上去像这个样子。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">[tom@CentOS trunk]$ cat README </span><br><span class="line">* Supported operations:</span><br><span class="line"></span><br><span class="line">1) Accept input</span><br><span class="line">2) Display array elements</span><br><span class="line"></span><br><span class="line">[tom@CentOS trunk]$ svn status</span><br><span class="line">M       README</span><br><span class="line"></span><br><span class="line">[tom@CentOS trunk]$ svn commit -m &quot;Added supported operation in README&quot;</span><br><span class="line">Sending        trunk/README</span><br><span class="line">Transmitting file data .</span><br><span class="line">Committed revision 7.</span><br></pre></td></tr></table></figure>
+<p>现在，仓库位于修改版本 7，并且 <em>Jerry</em> 的工作副本已经过期。<em>Jerry</em> 也更新 README 文件并且试图提交他的更改。</p>
+<p><em>Jerry</em> 的 README 文件将会看上去像这个样子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">[jerry@CentOS trunk]$ cat README </span><br><span class="line">* File list</span><br><span class="line"></span><br><span class="line">1) array.c  Implementation of array operation.</span><br><span class="line">2) README   Instructions for user.</span><br><span class="line"></span><br><span class="line">[jerry@CentOS trunk]$ svn status</span><br><span class="line">M       README</span><br><span class="line"></span><br><span class="line">[jerry@CentOS trunk]$ svn commit -m &quot;Updated README&quot;</span><br><span class="line">Sending        trunk/README</span><br><span class="line">svn: Commit failed (details follow):</span><br><span class="line">svn: File or directory &apos;README&apos; is out of date; try updating</span><br><span class="line">svn: resource out of date; try updating</span><br></pre></td></tr></table></figure>
+<h2 id="第一步：视图冲突"><a href="#第一步：视图冲突" class="headerlink" title="第一步：视图冲突"></a>第一步：视图冲突</h2><p>Subversion 已经检测出 README 自上次更新后文件已经更改。所以，<em>Jerry</em> 必须更新他的工作副本。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[jerry@CentOS trunk]$ svn up</span><br><span class="line">Conflict discovered in &apos;README&apos;.</span><br><span class="line">Select: (p) postpone, (df) diff-full, (e) edit,</span><br><span class="line">        (mc) mine-conflict, (tc) theirs-conflict,</span><br><span class="line">        (s) show all options:</span><br></pre></td></tr></table></figure>
+<p>Subversion 提示说有一个冲突在 README 文件，并且 Subversion 并不知道如何解决这个问题。于是 <em>Jerry</em> 选择 <em>df</em> 选项来检查冲突。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">[jerry@CentOS trunk]$ svn up</span><br><span class="line">Conflict discovered in &apos;README&apos;.</span><br><span class="line">Select: (p) postpone, (df) diff-full, (e) edit,</span><br><span class="line">        (mc) mine-conflict, (tc) theirs-conflict,</span><br><span class="line">        (s) show all options: df</span><br><span class="line">--- .svn/text-base/README.svn-base  Sat Aug 24 18:07:13 2013</span><br><span class="line">+++ .svn/tmp/README.tmp Sat Aug 24 18:13:03 2013</span><br><span class="line">@@ -1 +1,11 @@</span><br><span class="line">-/* TODO: Add contents in README file */</span><br><span class="line">+&lt;&lt;&lt;&lt;&lt;&lt;&lt; .mine</span><br><span class="line">+* File list</span><br><span class="line">+</span><br><span class="line">+1) array.c Implementation of array operation.</span><br><span class="line">+2) README  Instructions for user.</span><br><span class="line">+=======</span><br><span class="line">+* Supported operations:</span><br><span class="line">+</span><br><span class="line">+1) Accept input</span><br><span class="line">+2) Display array elements</span><br><span class="line">+&gt;&gt;&gt;&gt;&gt;&gt;&gt; .r7</span><br><span class="line">Select: (p) postpone, (df) diff-full, (e) edit, (r) resolved,</span><br><span class="line">        (mc) mine-conflict, (tc) theirs-conflict,</span><br><span class="line">        (s) show all options:</span><br></pre></td></tr></table></figure>
+<h2 id="第二步：推迟冲突"><a href="#第二步：推迟冲突" class="headerlink" title="第二步：推迟冲突"></a>第二步：推迟冲突</h2><p>接下来 <em>Jerry</em> 用 <em>postpone（p）</em> 来解决冲突。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Select: (p) postpone, (df) diff-full, (e) edit, (r) resolved,</span><br><span class="line">        (mc) mine-conflict, (tc) theirs-conflict,</span><br><span class="line">        (s) show all options: p</span><br><span class="line">C    README</span><br><span class="line">Updated to revision 7.</span><br><span class="line">Summary of conflicts:</span><br><span class="line">  Text conflicts: 1</span><br></pre></td></tr></table></figure>
+<p>在用文档编辑器打开 README 文件后，<em>Jerry</em> 意识到 Subversion 已经包含了 <em>Tom</em> 的代码和他的代码，并被冲突标示包裹了起来。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">[jerry@CentOS trunk]$ cat README</span><br><span class="line">&lt;&lt;&lt;&lt;&lt;&lt;&lt; .min</span><br><span class="line">* File list</span><br><span class="line"></span><br><span class="line">1) array.c  Implementation of array operation.</span><br><span class="line"></span><br><span class="line">2) README   Instructions for user.</span><br><span class="line"></span><br><span class="line">=======</span><br><span class="line">*  Supported operations:</span><br><span class="line"></span><br><span class="line">1) Accept input</span><br><span class="line">2) Display array elements</span><br><span class="line">&gt;&gt;&gt;&gt;&gt;&gt;&gt; .r7</span><br></pre></td></tr></table></figure>
+<p><em>Jerry</em> 想让 <em>Tom</em> 的更改跟他的保持一致，所以他决定移除包含冲突标识的行。</p>
+<p>所以，更改后的 README 将会是这个样子。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[jerry@CentOS trunk]$ cat README</span><br><span class="line">* File list</span><br><span class="line"></span><br><span class="line">1) array.c  Implementation of array operation.</span><br><span class="line">2) README   Instructions for user.</span><br><span class="line"></span><br><span class="line">* Supported operations:</span><br><span class="line"></span><br><span class="line">1) Accept input</span><br><span class="line">2) Display array elements</span><br></pre></td></tr></table></figure>
+<p><em>Jerry</em> 解决了冲突并试图再次提交。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[jerry@CentOS trunk]$ svn commit -m &quot;Updated README&quot;</span><br><span class="line">svn: Commit failed (details follow):</span><br><span class="line">svn: Aborting commit: &apos;/home/jerry/project_repo/trunk/README&apos; remains in conflict</span><br><span class="line"></span><br><span class="line">[jerry@CentOS trunk]$ svn status</span><br><span class="line">?       README.r6</span><br><span class="line">?       README.r7</span><br><span class="line">?       README.mine</span><br><span class="line">C       README</span><br></pre></td></tr></table></figure>
+<h2 id="第三步：解决冲突"><a href="#第三步：解决冲突" class="headerlink" title="第三步：解决冲突"></a>第三步：解决冲突</h2><p>在上面的提交中，字母 <em>C</em> 指示说有一个冲突在 README 文件。<em>Jerry</em> 解决了冲突但并没有告诉 Subversion 已经解决了冲突。 他使用了 resolve 命令通知 Subversion 冲突的解决。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[jerry@CentOS trunk]$ svn resolve --accept=working README</span><br><span class="line">Resolved conflicted state of &apos;README&apos;</span><br><span class="line"></span><br><span class="line">[jerry@CentOS trunk]$ svn status</span><br><span class="line">M       README</span><br><span class="line"></span><br><span class="line">[jerry@CentOS trunk]$ svn commit -m &quot;Updated README&quot;</span><br><span class="line">Sending        trunk/README</span><br><span class="line">Transmitting file data .</span><br><span class="line">Committed revision 8.</span><br></pre></td></tr></table></figure>
+<h1 id="SVN-标签"><a href="#SVN-标签" class="headerlink" title="SVN 标签"></a>SVN 标签</h1><h2 id="SVN-标签-1"><a href="#SVN-标签-1" class="headerlink" title="SVN 标签"></a>SVN 标签</h2><p>版本管理系统支持<em>tag</em>选项，通过使用<em>tag</em>的概念，我们可以给某一个具体版本的代码一个更加有意义的名字。标签允许给某一个具体版本的代码一个描述性强，难忘的名字。举个例子：BASIC_ARRAY_OPERATIONS 就比修改版本 7更有意义。</p>
+<p>让我们来看一个 <em>tag</em> 标签的例子。Tom为了能更好的审查代码，决定创建一个tag。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[tom@CentOS project_repo]$ svn copy --revision=4 trunk/ tags/basic_array_operations</span><br></pre></td></tr></table></figure>
+<p>上面的命令将会产生出下面的结果。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">A    tags/basic_array_operations/array.c</span><br><span class="line">Updated to revision 4.</span><br><span class="line">A         tags/basic_array_operations</span><br></pre></td></tr></table></figure>
+<p>上面的代码成功完成，新的目录将会被创建在 <em>tags</em> 目录下。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[tom@CentOS project_repo]$ ls -l tags/</span><br><span class="line">total 4</span><br><span class="line">drwxrwxr-x. 3 tom tom 4096 Aug 24 18:18 basic_array_operations</span><br></pre></td></tr></table></figure>
+<p>Tom想要在提交前双击。状态选项显示 tag 选项成功，所以他可以安全的提交他的更改。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[tom@CentOS project_repo]$ svn status</span><br><span class="line">A  +    tags/basic_array_operations</span><br><span class="line"></span><br><span class="line">[tom@CentOS project_repo]$ svn commit -m &quot;Created tag for basic array operations&quot;</span><br><span class="line">Adding         tags/basic_array_operations</span><br><span class="line"></span><br><span class="line">Committed revision 5.</span><br></pre></td></tr></table></figure>
+<h1 id="SVN-分支"><a href="#SVN-分支" class="headerlink" title="SVN 分支"></a>SVN 分支</h1><h2 id="SVN-分支-1"><a href="#SVN-分支-1" class="headerlink" title="SVN 分支"></a>SVN 分支</h2><p>Branch 选项会给开发者创建出另外一条线路。当有人希望开发进程分开成两条不同的线路时，这个选项会非常有用。我们先假设你已经发布了一个产品的 1.0 版本，你可能想创建一个新的分支，这样就可以不干扰到 1.0 版本的bug修复的同时，又可以开发2.0版本。</p>
+<p>在这一节，我们将看到如何创建，穿过和合并分支。Jerry 因为代码冲突的事情不开心，所以他决定创建一个新的私有分支。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">[jerry@CentOS project_repo]$ ls</span><br><span class="line">branches  tags  trunk</span><br><span class="line"></span><br><span class="line">[jerry@CentOS project_repo]$ svn copy trunk branches/jerry_branch</span><br><span class="line">A         branches/jerry_branch</span><br><span class="line"></span><br><span class="line">[jerry@CentOS project_repo]$ svn status</span><br><span class="line">A  +    branches/jerry_branch</span><br><span class="line"></span><br><span class="line">[jerry@CentOS project_repo]$ svn commit -m &quot;Jerry&apos;s private branch&quot;</span><br><span class="line">Adding         branches/jerry_branch</span><br><span class="line">Adding         branches/jerry_branch/README</span><br><span class="line"></span><br><span class="line">Committed revision 9.</span><br><span class="line">[jerry@CentOS project_repo]$</span><br></pre></td></tr></table></figure>
+<p>现在 Jerry 在自己的分支下开始工作。他给序列添加了 sort 选项。Jerry 修改后的代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[jerry@CentOS project_repo]$ cd branches/jerry_branch/</span><br><span class="line"></span><br><span class="line">[jerry@CentOS jerry_branch]$ cat array.c</span><br></pre></td></tr></table></figure>
+<p>上面的代码将会产生下面的结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#define MAX 16</span><br><span class="line"></span><br><span class="line">void bubble_sort(int *arr, int n)</span><br><span class="line">&#123;</span><br><span class="line">   int i, j, temp, flag = 1;</span><br><span class="line">   for (i = 1; i &lt; n &amp;&amp; flag == 1; ++i) &#123;</span><br><span class="line">      flag = 0;</span><br><span class="line">      for (j = 0; j &lt; n - i; ++j) &#123;</span><br><span class="line">         if (arr[j] &gt; arr[j + 1]) &#123;</span><br><span class="line">            flag = 1;</span><br><span class="line">            temp = arr[j];</span><br><span class="line">            arr[j] = arr[j + 1];</span><br><span class="line">            arr[j + 1] = temp;</span><br><span class="line">         &#125;</span><br><span class="line">      &#125;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void accept_input(int *arr, int n)</span><br><span class="line">&#123;</span><br><span class="line">   int i;</span><br><span class="line"></span><br><span class="line">   for (i = 0; i &lt; n; ++i) </span><br><span class="line">   scanf(&quot;%d&quot;, &amp;arr[i]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void display(int *arr, int n)</span><br><span class="line">&#123;</span><br><span class="line">   int i;</span><br><span class="line"></span><br><span class="line">   for (i = 0; i &lt; n; ++i)</span><br><span class="line">   printf(&quot;|%d| &quot;, arr[i]);</span><br><span class="line"></span><br><span class="line">   printf(&quot;\n&quot;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main(void)</span><br><span class="line">&#123;</span><br><span class="line">   int i, n, key, ret, arr[MAX];</span><br><span class="line"></span><br><span class="line">   printf(&quot;Enter the total number of elements: &quot;);</span><br><span class="line">   scanf(&quot;%d&quot;, &amp;n);</span><br><span class="line"></span><br><span class="line">   /* Error handling for array overflow */</span><br><span class="line">   if (n &gt;MAX) &#123;</span><br><span class="line">      fprintf(stderr, &quot;Number of elements must be less than %d\n&quot;, MAX);</span><br><span class="line">      return 1;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   printf(&quot;Enter the elements\n&quot;);</span><br><span class="line">   accept_input(arr, n);</span><br><span class="line"></span><br><span class="line">   printf(&quot;Array has following elements\n&quot;);</span><br><span class="line">   display(arr, n);</span><br><span class="line"></span><br><span class="line">   printf(&quot;Sorted data is\n&quot;);</span><br><span class="line">   bubble_sort(arr, n);</span><br><span class="line">   display(arr, n);</span><br><span class="line"></span><br><span class="line">   return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Jerry 编译并且测试了他的代码，准备提交他的更改。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[jerry@CentOS jerry_branch]$ make array</span><br><span class="line">cc     array.c   -o array</span><br><span class="line"></span><br><span class="line">[jerry@CentOS jerry_branch]$ ./array</span><br></pre></td></tr></table></figure>
+<p>上面的命令将会产生如下的结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">Enter the total number of elements: 5</span><br><span class="line">Enter the elements</span><br><span class="line">10</span><br><span class="line">-4</span><br><span class="line">2</span><br><span class="line">7 </span><br><span class="line">9</span><br><span class="line">Array has following elements</span><br><span class="line">|10| |-4| |2| |7| |9| </span><br><span class="line">Sorted data is</span><br><span class="line">|-4| |2| |7| |9| |10| </span><br><span class="line"></span><br><span class="line">[jerry@CentOS jerry_branch]$ svn status</span><br><span class="line">?       array</span><br><span class="line">M       array.c</span><br><span class="line"></span><br><span class="line">[jerry@CentOS jerry_branch]$ svn commit -m &quot;Added sort operation&quot;</span><br><span class="line">Sending        jerry_branch/array.c</span><br><span class="line">Transmitting file data .</span><br><span class="line">Committed revision 10.</span><br></pre></td></tr></table></figure>
+<p>同时，越过主干，Tom 决定实现 search 选项。Tom 添加了 search 选项而添加代码，他的代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[tom@CentOS trunk]$ svn diff</span><br></pre></td></tr></table></figure>
+<p>上面的命令将会产生下面的结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line">Index: array.c</span><br><span class="line">===================================================================</span><br><span class="line">--- array.c   (revision 10)</span><br><span class="line">+++ array.c   (working copy)</span><br><span class="line">@@ -2,6 +2,27 @@</span><br><span class="line"></span><br><span class="line"> #define MAX 16</span><br><span class="line"></span><br><span class="line">+int bin_search(int *arr, int n, int key)</span><br><span class="line">+&#123;</span><br><span class="line">+   int low, high, mid;</span><br><span class="line">+</span><br><span class="line">+   low   = 0;</span><br><span class="line">+   high   = n - 1;</span><br><span class="line">+   mid   = low + (high - low) / 2;</span><br><span class="line">+</span><br><span class="line">+   while (low &lt;= high) &#123;</span><br><span class="line">+      if (arr[mid] == key)</span><br><span class="line">+         return mid;</span><br><span class="line">+      if (arr[mid] &gt; key)</span><br><span class="line">+         high = mid - 1;</span><br><span class="line">+      else</span><br><span class="line">+         low = mid + 1;</span><br><span class="line">+      mid = low + (high - low) / 2;</span><br><span class="line">+   &#125;</span><br><span class="line">+</span><br><span class="line">+   return -1;</span><br><span class="line">+&#125;</span><br><span class="line">+</span><br><span class="line"> void accept_input(int *arr, int n)</span><br><span class="line"> &#123;</span><br><span class="line">    int i;</span><br><span class="line">@@ -22,7 +43,7 @@</span><br><span class="line"></span><br><span class="line"> int main(void)</span><br><span class="line"> &#123;</span><br><span class="line">-   int i, n, arr[MAX];</span><br><span class="line">+   int i, n, ret, key, arr[MAX];</span><br><span class="line"></span><br><span class="line">    printf(&quot;Enter the total number of elements: &quot;);</span><br><span class="line">    scanf(&quot;%d&quot;, &amp;n);</span><br><span class="line">@@ -39,5 +60,16 @@</span><br><span class="line">    printf(&quot;Array has following elements\n&quot;);</span><br><span class="line">    display(arr, n);</span><br><span class="line"></span><br><span class="line">+   printf(&quot;Enter the element to be searched: &quot;);</span><br><span class="line">+   scanf(&quot;%d&quot;, &amp;key);</span><br><span class="line">+</span><br><span class="line">+   ret = bin_search(arr, n, key);</span><br><span class="line">+   if (ret &lt; 0) &#123;</span><br><span class="line">+      fprintf(stderr, &quot;%d element not present in array\n&quot;, key);</span><br><span class="line">+      return 1;</span><br><span class="line">+   &#125;</span><br><span class="line">+</span><br><span class="line">+   printf(&quot;%d element found at location %d\n&quot;, key, ret + 1);</span><br><span class="line">+</span><br><span class="line">    return 0;</span><br><span class="line"> &#125;</span><br><span class="line">After reviewing, he commits his changes.</span><br><span class="line"></span><br><span class="line">[tom@CentOS trunk]$ svn status</span><br><span class="line">?       array</span><br><span class="line">M       array.c</span><br><span class="line"></span><br><span class="line">[tom@CentOS trunk]$ svn commit -m &quot;Added search operation&quot;</span><br><span class="line">Sending        trunk/array.c</span><br><span class="line">Transmitting file data .</span><br><span class="line">Committed revision 11.</span><br></pre></td></tr></table></figure>
+<p>但是 Tom 好奇 Jerry 在他自己的私有分支中干了什么：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">[tom@CentOS trunk]$ cd ../branches/</span><br><span class="line">[tom@CentOS branches]$ svn up</span><br><span class="line">A    jerry_branch</span><br><span class="line">A    jerry_branch/array.c</span><br><span class="line">A    jerry_branch/README</span><br><span class="line"></span><br><span class="line">[tom@CentOS branches]$ svn log</span><br><span class="line">------------------------------------------------------------------------</span><br><span class="line">r9 | jerry | 2013-08-27 21:56:51 +0530 (Tue, 27 Aug 2013) | 1 line</span><br><span class="line"></span><br><span class="line">Added sort operation</span><br><span class="line">------------------------------------------------------------------------</span><br></pre></td></tr></table></figure>
+<p>通过查看 Subversion 的 log 信息，Tom 发现 Jerry 依赖 ‘sort’ 选项。Tom 决定增添用折半查找，期望数据总是根据种类进行分类。但是如果用户提供的数据是没有进行分类呢？在那种情况下，折半查找将会失效。所以他决定接着 Jerry 的代码，在搜索选项前先进性分类。所以他告诉 Subversion 合并 Jerry 的分支到主干中去。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[tom@CentOS trunk]$ pwd</span><br><span class="line">/home/tom/project_repo/trunk</span><br><span class="line"></span><br><span class="line">[tom@CentOS trunk]$ svn merge ../branches/jerry_branch/</span><br><span class="line">--- Merging r9 through r11 into &apos;.&apos;:</span><br><span class="line">U    array.c</span><br></pre></td></tr></table></figure>
+<p>在融合后，array.c 会看上去是这个样子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[tom@CentOS trunk]$ cat array.c</span><br></pre></td></tr></table></figure>
+<p>上面的代码将会产生下面的结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#define MAX 16</span><br><span class="line"></span><br><span class="line">void bubble_sort(int *arr, int n)</span><br><span class="line">&#123;</span><br><span class="line">   int i, j, temp, flag = 1;</span><br><span class="line"></span><br><span class="line">   for (i = 1; i &lt; n &amp;&amp; flag == 1; ++i) &#123;</span><br><span class="line">      flag = 0;</span><br><span class="line">      for (j = 0; j &lt; n - i; ++j) &#123;</span><br><span class="line">         if (arr[j] &gt; arr[j + 1]) &#123;</span><br><span class="line">            flag        = 1;</span><br><span class="line">            temp        = arr[j];</span><br><span class="line">            arr[j]      = arr[j + 1];</span><br><span class="line">            arr[j + 1]  = temp;</span><br><span class="line">         &#125;</span><br><span class="line">      &#125;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int bin_search(int *arr, int n, int key)</span><br><span class="line">&#123;</span><br><span class="line">   int low, high, mid;</span><br><span class="line"></span><br><span class="line">   low   = 0;</span><br><span class="line">   high  = n - 1;</span><br><span class="line">   mid   = low + (high - low) / 2;</span><br><span class="line"></span><br><span class="line">   while (low &lt;= high) &#123;</span><br><span class="line">      if (arr[mid] == key)</span><br><span class="line">         return mid;</span><br><span class="line">      if (arr[mid] &gt; key)</span><br><span class="line">         high = mid - 1;</span><br><span class="line">      else</span><br><span class="line">         low = mid + 1;</span><br><span class="line">      mid = low + (high - low) / 2;</span><br><span class="line">   &#125;</span><br><span class="line">   return -1;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void accept_input(int *arr, int n)</span><br><span class="line">&#123;</span><br><span class="line">   int i;</span><br><span class="line"></span><br><span class="line">   for (i = 0; i &lt; n; ++i)</span><br><span class="line">      scanf(&quot;%d&quot;, &amp;arr[i]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void display(int *arr, int n)</span><br><span class="line">&#123;</span><br><span class="line">   int i;</span><br><span class="line">   for (i = 0; i &lt; n; ++i)</span><br><span class="line">      printf(&quot;|%d| &quot;, arr[i]);</span><br><span class="line">   printf(&quot;\n&quot;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main(void)</span><br><span class="line">&#123;</span><br><span class="line">   int i, n, ret, key, arr[MAX];</span><br><span class="line"></span><br><span class="line">   printf(&quot;Enter the total number of elements: &quot;);</span><br><span class="line">   scanf(&quot;%d&quot;, &amp;n);</span><br><span class="line"></span><br><span class="line">   /* Error handling for array overflow */</span><br><span class="line">   if (n &gt; MAX) &#123;</span><br><span class="line">      fprintf(stderr, &quot;Number of elements must be less than %d\n&quot;, MAX);</span><br><span class="line">      return 1;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   printf(&quot;Enter the elements\n&quot;);</span><br><span class="line">   accept_input(arr, n);</span><br><span class="line"></span><br><span class="line">   printf(&quot;Array has following elements\n&quot;);</span><br><span class="line">   display(arr, n);</span><br><span class="line"></span><br><span class="line">   printf(&quot;Sorted data is\n&quot;);</span><br><span class="line">   bubble_sort(arr, n);</span><br><span class="line">   display(arr, n);</span><br><span class="line"></span><br><span class="line">   printf(&quot;Enter the element to be searched: &quot;);</span><br><span class="line">   scanf(&quot;%d&quot;, &amp;key);</span><br><span class="line"></span><br><span class="line">   ret = bin_search(arr, n, key);</span><br><span class="line">   if (ret &lt; 0) &#123;</span><br><span class="line">      fprintf(stderr, &quot;%d element not present in array\n&quot;, key);</span><br><span class="line">      return 1;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   printf(&quot;%d element found at location %d\n&quot;, key, ret +   1);</span><br><span class="line"></span><br><span class="line">   return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>经过编译和测试后，Tom 提交了他的更改到仓库。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">[tom@CentOS trunk]$ make array</span><br><span class="line">cc     array.c   -o array</span><br><span class="line"></span><br><span class="line">[tom@CentOS trunk]$ ./array </span><br><span class="line">Enter the total number of elements: 5</span><br><span class="line">Enter the elements</span><br><span class="line">10</span><br><span class="line">-2</span><br><span class="line">8</span><br><span class="line">15</span><br><span class="line">3</span><br><span class="line">Array has following elements</span><br><span class="line">|10| |-2| |8| |15| |3| </span><br><span class="line">Sorted data is</span><br><span class="line">|-2| |3| |8| |10| |15| </span><br><span class="line">Enter the element to be searched: -2</span><br><span class="line">-2 element found at location 1</span><br><span class="line"></span><br><span class="line">[tom@CentOS trunk]$ svn commit -m &quot;Merge changes from Jerry&apos;s code&quot;</span><br><span class="line">Sending        trunk</span><br><span class="line">Sending        trunk/array.c</span><br><span class="line">Transmitting file data .</span><br><span class="line">Committed revision 12.</span><br><span class="line"></span><br><span class="line">[tom@CentOS trunk]$</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+    
+    
+	<div>
+      
+        
+
+      
+	</div>
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>您的支持是作者最大的动力</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="xiaoerguang 请我喝杯咖啡！">
+        <p>请我喝杯咖啡！</p>
+      </div>
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    xiaoerguang
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://xiaoerguang.top/p/be2f.html" title="svn搭建教程">http://xiaoerguang.top/p/be2f.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/svn/" rel="tag"># -svn</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/p/faca.html" rel="prev" title="Linux教程">
+                Linux教程 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.gif" alt="xiaoerguang">
+            
+              <p class="site-author-name" itemprop="name">xiaoerguang</p>
+              <p class="site-description motion-element" itemprop="description">小二光的博客</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/yongguang1990/" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:597688988@qq.com" target="_blank" title="QQ邮箱">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>QQ邮箱</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.cnblogs.com/yongguang1990/" target="_blank" title="博客园">
+                      
+                        <i class="fa fa-fw fa-google"></i>博客园</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://music.163.com/#/my/m/music/playlist?id=152709328" target="_blank" title="网易云音乐">
+                      
+                        <i class="fa fa-fw fa-twitter"></i>网易云音乐</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://weibo.com/5726729706/profile?rightmod=1&wvr=6&mod=personinfo&is_a" target="_blank" title="新浪微博">
+                      
+                        <i class="fa fa-fw fa-stack-overflow"></i>新浪微博</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://maoyanping.com" title="毛毛的博客" target="_blank">毛毛的博客</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://github.com/maomaoyp" title="毛毛的Github" target="_blank">毛毛的Github</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#关于SVN"><span class="nav-number">1.</span> <span class="nav-text">关于SVN</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#SVN-教程"><span class="nav-number">1.1.</span> <span class="nav-text">SVN 教程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#适用人群"><span class="nav-number">1.2.</span> <span class="nav-text">适用人群</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#学习前提"><span class="nav-number">1.3.</span> <span class="nav-text">学习前提</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#版本信息"><span class="nav-number">1.4.</span> <span class="nav-text">版本信息</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SVN-基本概念"><span class="nav-number">2.</span> <span class="nav-text">SVN 基本概念</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是版本控制系统-VCS"><span class="nav-number">2.1.</span> <span class="nav-text">什么是版本控制系统(VCS)</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SVN-环境搭建"><span class="nav-number">3.</span> <span class="nav-text">SVN 环境搭建</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#SVN-环境搭建-1"><span class="nav-number">3.1.</span> <span class="nav-text">SVN 环境搭建</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Apache-安装"><span class="nav-number">3.2.</span> <span class="nav-text">Apache 安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#用户安装"><span class="nav-number">3.3.</span> <span class="nav-text">用户安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#版本库安装"><span class="nav-number">3.4.</span> <span class="nav-text">版本库安装</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SVN-生命周期"><span class="nav-number">4.</span> <span class="nav-text">SVN 生命周期</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#SVN-生命周期-1"><span class="nav-number">4.1.</span> <span class="nav-text">SVN 生命周期</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建版本库"><span class="nav-number">4.2.</span> <span class="nav-text">创建版本库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#检出"><span class="nav-number">4.3.</span> <span class="nav-text">检出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#更新"><span class="nav-number">4.4.</span> <span class="nav-text">更新</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#执行变更"><span class="nav-number">4.5.</span> <span class="nav-text">执行变更</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#复查变化"><span class="nav-number">4.6.</span> <span class="nav-text">复查变化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修复错误"><span class="nav-number">4.7.</span> <span class="nav-text">修复错误</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解决冲突"><span class="nav-number">4.8.</span> <span class="nav-text">解决冲突</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#提交更改"><span class="nav-number">4.9.</span> <span class="nav-text">提交更改</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SVN-检出过程"><span class="nav-number">5.</span> <span class="nav-text">SVN 检出过程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#SVN-检出过程-1"><span class="nav-number">5.1.</span> <span class="nav-text">SVN 检出过程</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SVN-执行修改"><span class="nav-number">6.</span> <span class="nav-text">SVN 执行修改</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#SVN-执行修改-1"><span class="nav-number">6.1.</span> <span class="nav-text">SVN 执行修改</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SVN-检查更改"><span class="nav-number">7.</span> <span class="nav-text">SVN 检查更改</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#SVN-检查更改-1"><span class="nav-number">7.1.</span> <span class="nav-text">SVN 检查更改</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SVN-更新过程"><span class="nav-number">8.</span> <span class="nav-text">SVN 更新过程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#SVN-更新过程-1"><span class="nav-number">8.1.</span> <span class="nav-text">SVN 更新过程</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SVN-修复错误"><span class="nav-number">9.</span> <span class="nav-text">SVN 修复错误</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#SVN-修复错误-1"><span class="nav-number">9.1.</span> <span class="nav-text">SVN 修复错误</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SVN-解决冲突"><span class="nav-number">10.</span> <span class="nav-text">SVN 解决冲突</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#SVN-解决冲突-1"><span class="nav-number">10.1.</span> <span class="nav-text">SVN 解决冲突</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第一步：视图冲突"><span class="nav-number">10.2.</span> <span class="nav-text">第一步：视图冲突</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第二步：推迟冲突"><span class="nav-number">10.3.</span> <span class="nav-text">第二步：推迟冲突</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第三步：解决冲突"><span class="nav-number">10.4.</span> <span class="nav-text">第三步：解决冲突</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SVN-标签"><span class="nav-number">11.</span> <span class="nav-text">SVN 标签</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#SVN-标签-1"><span class="nav-number">11.1.</span> <span class="nav-text">SVN 标签</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SVN-分支"><span class="nav-number">12.</span> <span class="nav-text">SVN 分支</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#SVN-分支-1"><span class="nav-number">12.1.</span> <span class="nav-text">SVN 分支</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; 2014-8 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-star"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xiaoerguang</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">全站文章总字数&#58;</span>
+    
+    <span title="全站文章总字数">111.2k</span>
+  
+</div>
+<div class="powered-by">
+<span id="busuanzi_container_site_pv">
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+</span>
+</div>
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共111.2k字</span>
+</div><br>
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 全程赞助</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: '3gLkeiJSti8dBz2ytIbTaSHt-gzGzoHsz',
+        appKey: 'zVwFJfjHmp6s5EdD9qER5Hw6',
+        placeholder: '陈独秀你坐下！',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("3gLkeiJSti8dBz2ytIbTaSHt-gzGzoHsz", "zVwFJfjHmp6s5EdD9qER5Hw6");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/miku.model.json"},"display":{"position":"right","width":100,"height":200},"mobile":{"show":true},"log":false});</script></body>
+<script type="text/javascript" src="/js/src/love.js"></script>
+</html>
