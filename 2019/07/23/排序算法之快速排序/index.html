@@ -97,19 +97,19 @@
 
 
 
-<meta name="description" content="快速排序快速排序是由东尼·霍尔所发展的一种排序算法。在平均状况下，排序 n 个项目要 Ο(nlogn) 次比较。在最坏状况下则需要 Ο(n2) 次比较，但这种状况并不常见。事实上，快速排序通常明显比其他 Ο(nlogn) 算法更快，因为它的内部循环（inner loop）可以在大部分的架构上很有效率地被实现出来。 快速排序使用分治法（Divide and conquer）策略来把一个串行（list">
+<meta name="description" content="快速排序 快速排序是由东尼·霍尔所发展的一种排序算法。在平均状况下，排序 n 个项目要 Ο(nlogn) 次比较。在最坏状况下则需要 Ο(n2) 次比较，但这种状况并不常见。事实上，快速排序通常明显比其他 Ο(nlogn) 算法更快，因为它的内部循环（inner loop）可以在大部分的架构上很有效率地被实现出来。">
 <meta name="keywords" content="排序算法">
 <meta property="og:type" content="article">
 <meta property="og:title" content="排序算法之快速排序">
 <meta property="og:url" content="http://xiaoerguang.top/2019/07/23/排序算法之快速排序/index.html">
 <meta property="og:site_name" content="XiaoErGuang">
-<meta property="og:description" content="快速排序快速排序是由东尼·霍尔所发展的一种排序算法。在平均状况下，排序 n 个项目要 Ο(nlogn) 次比较。在最坏状况下则需要 Ο(n2) 次比较，但这种状况并不常见。事实上，快速排序通常明显比其他 Ο(nlogn) 算法更快，因为它的内部循环（inner loop）可以在大部分的架构上很有效率地被实现出来。 快速排序使用分治法（Divide and conquer）策略来把一个串行（list">
+<meta property="og:description" content="快速排序 快速排序是由东尼·霍尔所发展的一种排序算法。在平均状况下，排序 n 个项目要 Ο(nlogn) 次比较。在最坏状况下则需要 Ο(n2) 次比较，但这种状况并不常见。事实上，快速排序通常明显比其他 Ο(nlogn) 算法更快，因为它的内部循环（inner loop）可以在大部分的架构上很有效率地被实现出来。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://www.runoob.com/wp-content/uploads/2019/03/quickSort.gif">
-<meta property="og:updated_time" content="2019-07-18T09:05:11.672Z">
+<meta property="og:updated_time" content="2019-07-18T09:27:58.982Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="排序算法之快速排序">
-<meta name="twitter:description" content="快速排序快速排序是由东尼·霍尔所发展的一种排序算法。在平均状况下，排序 n 个项目要 Ο(nlogn) 次比较。在最坏状况下则需要 Ο(n2) 次比较，但这种状况并不常见。事实上，快速排序通常明显比其他 Ο(nlogn) 算法更快，因为它的内部循环（inner loop）可以在大部分的架构上很有效率地被实现出来。 快速排序使用分治法（Divide and conquer）策略来把一个串行（list">
+<meta name="twitter:description" content="快速排序 快速排序是由东尼·霍尔所发展的一种排序算法。在平均状况下，排序 n 个项目要 Ο(nlogn) 次比较。在最坏状况下则需要 Ο(n2) 次比较，但这种状况并不常见。事实上，快速排序通常明显比其他 Ο(nlogn) 算法更快，因为它的内部循环（inner loop）可以在大部分的架构上很有效率地被实现出来。">
 <meta name="twitter:image" content="https://www.runoob.com/wp-content/uploads/2019/03/quickSort.gif">
 
 
@@ -374,7 +374,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-07-18T17:05:11+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2019-07-18T17:27:58+08:00">
                 2019-07-18
               </time>
             
@@ -423,7 +423,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1.2k
+                  1.1k
                 </span>
               
 
@@ -460,8 +460,7 @@
       
 
       
-        <h1 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h1><p>快速排序是由东尼·霍尔所发展的一种排序算法。在平均状况下，排序 n 个项目要 Ο(nlogn) 次比较。在最坏状况下则需要 Ο(n2) 次比较，但这种状况并不常见。事实上，快速排序通常明显比其他 Ο(nlogn) 算法更快，因为它的内部循环（inner loop）可以在大部分的架构上很有效率地被实现出来。</p>
-<p>快速排序使用分治法（Divide and conquer）策略来把一个串行（list）分为两个子串行（sub-lists）。</p>
+        <p>快速排序使用分治法（Divide and conquer）策略来把一个串行（list）分为两个子串行（sub-lists）。</p>
 <p>快速排序又是一种分而治之思想在排序算法上的典型应用。本质上来看，快速排序应该算是在冒泡排序基础上的递归分治法。</p>
 <p>快速排序的名字起的是简单粗暴，因为一听到这个名字你就知道它存在的意义，就是快，而且效率高！它是处理大数据最快的排序算法之一了。虽然 Worst Case 的时间复杂度达到了 O(n²)，但是人家就是优秀，在大多数情况下都比平均时间复杂度为 O(n logn) 的排序算法表现要更好，可是这是为什么呢，我也不知道。好在我的强迫症又犯了，查了 N 多资料终于在《算法艺术与信息学竞赛》上找到了满意的答案：</p>
 <blockquote>
@@ -496,7 +495,7 @@
   <p><span>本文标题:</span><a href="/2019/07/23/排序算法之快速排序/">排序算法之快速排序</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 xiaoerguang 的个人博客">xiaoerguang</a></p>
   <p><span>发布时间:</span>2019年07月23日 - 16:31</p>
-  <p><span>最后更新:</span>2019年07月18日 - 17:05</p>
+  <p><span>最后更新:</span>2019年07月18日 - 17:27</p>
   <p><span>原始链接:</span><a href="/2019/07/23/排序算法之快速排序/" title="排序算法之快速排序">http://xiaoerguang.top/2019/07/23/排序算法之快速排序/</a>
     <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://xiaoerguang.top/2019/07/23/排序算法之快速排序/" aria-label="复制成功！"></i></span>
   </p>
@@ -678,7 +677,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-count">27</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -791,7 +790,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#快速排序"><span class="nav-number">1.</span> <span class="nav-text">快速排序</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-算法步骤"><span class="nav-number">1.0.1.</span> <span class="nav-text">1. 算法步骤</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-动图演示"><span class="nav-number">1.0.2.</span> <span class="nav-text">2. 动图演示</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码实现"><span class="nav-number">1.1.</span> <span class="nav-text">代码实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#JavaScript"><span class="nav-number">1.1.1.</span> <span class="nav-text">JavaScript</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实例"><span class="nav-number">1.2.</span> <span class="nav-text">实例</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Python"><span class="nav-number">1.2.1.</span> <span class="nav-text">Python</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实例-1"><span class="nav-number">1.3.</span> <span class="nav-text">实例</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Go"><span class="nav-number">1.3.1.</span> <span class="nav-text">Go</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实例-2"><span class="nav-number">1.4.</span> <span class="nav-text">实例</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Java"><span class="nav-number">1.4.1.</span> <span class="nav-text">Java</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实例-3"><span class="nav-number">1.5.</span> <span class="nav-text">实例</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#PHP"><span class="nav-number">1.5.1.</span> <span class="nav-text">PHP</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实例-4"><span class="nav-number">1.6.</span> <span class="nav-text">实例</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-算法步骤"><span class="nav-number">1.</span> <span class="nav-text">1. 算法步骤</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-动图演示"><span class="nav-number">2.</span> <span class="nav-text">2. 动图演示</span></a></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#代码实现"><span class="nav-number"></span> <span class="nav-text">代码实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#JavaScript"><span class="nav-number">1.</span> <span class="nav-text">JavaScript</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实例"><span class="nav-number"></span> <span class="nav-text">实例</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Python"><span class="nav-number">1.</span> <span class="nav-text">Python</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实例-1"><span class="nav-number"></span> <span class="nav-text">实例</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Go"><span class="nav-number">1.</span> <span class="nav-text">Go</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实例-2"><span class="nav-number"></span> <span class="nav-text">实例</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Java"><span class="nav-number">1.</span> <span class="nav-text">Java</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实例-3"><span class="nav-number"></span> <span class="nav-text">实例</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#PHP"><span class="nav-number">1.</span> <span class="nav-text">PHP</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实例-4"><span class="nav-number"></span> <span class="nav-text">实例</span></a></li></div>
             
 
           </div>
@@ -826,7 +825,7 @@
     
       <span class="post-meta-item-text">全站文章总字数&#58;</span>
     
-    <span title="全站文章总字数">144.9k</span>
+    <span title="全站文章总字数">145.3k</span>
   
 </div>
 <div class="powered-by">
@@ -836,7 +835,7 @@
 </div>
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共144.9k字</span>
+  <span class="post-count">博客全站共145.3k字</span>
 </div><br>
 
   <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 全程赞助</div>
